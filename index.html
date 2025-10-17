@@ -336,15 +336,15 @@
         /* Email Form Styles */
         .email-form {
             margin: 20px 0;
-            text-align: left;
+            text-align: center;
         }
         
         .email-form input {
             width: 100%;
             padding: 12px 15px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            border: none;
             border-radius: 8px;
-            border: 2px solid #ff8a00;
             background: rgba(255,255,255,0.9);
             font-size: 1rem;
             color: #333;
@@ -352,13 +352,12 @@
         
         .email-form input:focus {
             outline: none;
-            border-color: #ff5722;
-            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+            box-shadow: 0 0 0 2px #ff5722;
         }
         
         .email-form button {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             background: linear-gradient(45deg, #ff8a00, #e52e71);
             color: white;
             border: none;
@@ -370,16 +369,8 @@
         }
         
         .email-form button:hover {
-            background: linear-gradient(45deg, #e52e71, #ff8a00);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);
-        }
-        
-        .form-title {
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            color: #ffcc00;
+            box-shadow: 0 5px 15px rgba(229, 46, 113, 0.5);
         }
         
         @media (max-width: 768px) {
@@ -407,11 +398,6 @@
     </style>
 </head>
 <body>
-    <!-- Audio für Popup-Sound -->
-    <audio id="popupSound" preload="auto">
-        <source src="https://assets.mixkit.co/active_storage/sfx/286/286-preview.mp3" type="audio/mpeg">
-    </audio>
-
     <!-- Popup Overlay -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup">
@@ -429,11 +415,10 @@
                 </ul>
             </div>
             
-            <p class="urgency">Enter Your Email To Get Instant Access!</p>
+            <p class="urgency">Limited Time Offer - Claim Now!</p>
             
             <!-- Email Form -->
             <div class="email-form">
-                <div class="form-title">Enter Your Details Below:</div>
                 <form method="post" action="https://www.sendsteed.com/subscribe/">
                     <input name="e115811" required type="email" placeholder="your@email.com">
                     <input name="n115811" required type="text" placeholder="Your Name">
@@ -445,9 +430,9 @@
                 </form>
             </div>
             
-            <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;">
-                We respect your privacy. Unsubscribe at any time.
-            </p>
+            <div class="popup-buttons">
+                <button class="popup-btn no" onclick="closePopup()">No Thanks, I Don't Want Free Money</button>
+            </div>
         </div>
     </div>
 
@@ -470,7 +455,7 @@
                 <img src="https://summertraffic.net/hosted/images/a7/d4eea981e5415eafd14bbd3bc6f8f1/screenshot-1.png" alt="Buyer Traffic System" class="main-image">
             </div>
             <div class="price-container">
-                <a href="https://howtomakemoneynlinereview.github.io/how-to-get-traffic-on-my-website/" class="price">ONLY $7 - $9 PER TRAFFIC SOURCE! CLICK HERE</a>
+                <a href="https://llclick.com/svkwwkdj/" class="price">ONLY $7 - $9 PER TRAFFIC SOURCE! CLICK HERE</a>
             </div>
         </div>
     </header>
@@ -479,8 +464,10 @@
         <div class="container">
             <h2 class="section-title">This NEW Affiliate Platform Pays Up To <span class="highlight">YES! $40,000 PER SALE</span></h2>
             
+            <!-- Video wurde entfernt -->
+            
             <div style="margin-top: 15px;">
-                <a href="https://howtomakemoneynlinereview.github.io/how-to-get-real-buyer-traffic/best-high-paying-affiliate-programs.html" class="btn">GET ACCESS NOW!</a>
+                <a href="https://llclick.com/74d4kcdj/" class="btn">GET ACCESS NOW!</a>
             </div>
         </div>
     </section>
@@ -513,31 +500,24 @@
         </div>
     </footer>
 
+    <!-- Audio für Ton-Effekt -->
+    <audio id="popupSound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/286/286-preview.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         // Popup anzeigen nach kurzer Verzögerung
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 document.getElementById('popupOverlay').classList.add('active');
-                // Sound abspielen
-                playPopupSound();
+                // Ton abspielen
+                var audio = document.getElementById('popupSound');
+                audio.volume = 0.3;
+                audio.play().catch(function(e) {
+                    console.log("Audio playback failed:", e);
+                });
             }, 2000); // Popup nach 2 Sekunden anzeigen
         });
-        
-        // Popup-Sound abspielen
-        function playPopupSound() {
-            const audio = document.getElementById('popupSound');
-            audio.volume = 0.5; // Lautstärke reduzieren
-            audio.play().catch(e => {
-                console.log("Audio playback failed:", e);
-                // Fallback: Text-to-Speech falls Audio nicht funktioniert
-                if ('speechSynthesis' in window) {
-                    const speech = new SpeechSynthesisUtterance("Stop! Yes you! Claim your free gift now!");
-                    speech.volume = 0.7;
-                    speech.rate = 0.9;
-                    window.speechSynthesis.speak(speech);
-                }
-            });
-        }
         
         // Popup schließen
         function closePopup() {
@@ -551,11 +531,10 @@
             }
         });
         
-        // Formular absenden mit Erfolgsmeldung
+        // Formular absenden mit Bestätigung
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Hier könnte man eine Erfolgsmeldung anzeigen
-            alert('Thank you! Your free gifts are on the way to your email!');
+            alert('Congratulations! Your free gifts are on the way! Check your email shortly.');
             // Formular wirklich absenden
             this.submit();
         });
