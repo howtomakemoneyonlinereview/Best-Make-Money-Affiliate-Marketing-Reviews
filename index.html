@@ -1,22 +1,22 @@
-   
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Make Money Affiliate Marketing Reviews</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: white;
-            line-height: 1.5; 
+            line-height: 1.5;
         }
         
         .container {
@@ -138,21 +138,7 @@
             text-align: center;
             border-top: 2px solid #ff5722;
             border-bottom: 2px solid #ff5722;
-        }
-        
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 3px solid #ff5722;
-        }
-        
-        .video-container iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
+            padding: 40px 0;
         }
         
         .reviews-section {
@@ -244,6 +230,149 @@
             border-top: 3px solid #ff5722;
         }
         
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            border: 3px solid #ff5722;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.4s ease;
+        }
+        
+        .popup-overlay.active .popup {
+            transform: scale(1);
+        }
+        
+        .popup h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+        
+        .popup p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .popup-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .popup-btn.yes {
+            background: linear-gradient(45deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+        
+        .popup-btn.no {
+            background: linear-gradient(45deg, #f44336, #c62828);
+            color: white;
+        }
+        
+        .popup-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .gift-list {
+            text-align: left;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .gift-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .gift-list li:before {
+            content: "🎁";
+            position: absolute;
+            left: 0;
+        }
+        
+        .email-form {
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .email-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 2px solid #ff5722;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .email-form input:focus {
+            outline: none;
+            border-color: #ffcc00;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+        
+        .email-form button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .email-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(229, 46, 113, 0.5);
+        }
+        
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2rem;
@@ -258,17 +387,55 @@
                 align-items: center;
             }
             
-            .video-container iframe {
-                height: 220px;
-            }
-            
             .reviews-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .popup-buttons {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h2>STOP! YES YOU!</h2>
+            <p>Claim Your <span class="highlight">FREE GIFT</span> Before You Leave!</p>
+            
+            <div class="gift-list">
+                <h3>You'll Receive:</h3>
+                <ul>
+                    <li>Make Money Online Ebook Collection</li>
+                    <li>Bitcoin & Crypto Trading Guide</li>
+                    <li>Affiliate Marketing Success Blueprint</li>
+                    <li>Social Media Traffic Secrets</li>
+                    <li>Premium Email Templates</li>
+                </ul>
+            </div>
+            
+            <p class="urgency">Limited Time Offer - Claim Now!</p>
+            
+            <!-- Email Form -->
+            <div class="email-form">
+                <form method="post" action="https://www.sendsteed.com/subscribe/">
+                    <input name="e115811" required="" type="email" placeholder="your@email.com">
+                    <input name="n115811" required="" type="text" placeholder="Your Name">
+                    <input type="hidden" name="lllid" value="115811">
+                    <input type="hidden" name="lluid" value="sandyarta">
+                    <input type="hidden" name="redirect" value="">
+                    <input type="hidden" name="source" value="popup githubseite">
+                    <button type="submit">GET MY FREE GIFTS NOW!</button>
+                </form>
+            </div>
+            
+            <div class="popup-buttons">
+                <button class="popup-btn no" onclick="closePopup()">No Thanks, I Don't Want Free Money</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <h1>Best Make Money Affiliate Marketing Reviews</h1>
@@ -288,20 +455,23 @@
                 <img src="https://summertraffic.net/hosted/images/a7/d4eea981e5415eafd14bbd3bc6f8f1/screenshot-1.png" alt="Buyer Traffic System" class="main-image">
             </div>
             <div class="price-container">
-                <a href="https://howtomakemoneynlinereview.github.io/how-to-get-traffic-on-my-website/" class="price">ONLY $7 - $9 PER TRAFFIC SOURCE! CLICK HERE</a>
+                <a href="https://howtomakemoneyonlinereview.github.io/how-to-get-real-buyer-traffic/" class="price">ONLY $7 - $9 PER TRAFFIC SOURCE! CLICK HERE</a>
             </div>
         </div>
     </header>
+    
     <section class="video-section">
         <div class="container">
             <h2 class="section-title">This NEW Affiliate Platform Pays Up To <span class="highlight">YES! $40,000 PER SALE</span></h2>
             
-           
+            <!-- Video wurde entfernt -->
+            
             <div style="margin-top: 15px;">
-                <a href="https://howtomakemoneynlinereview.github.io/how-to-get-real-buyer-traffic/best-high-paying-affiliate-programs.html" class="btn">GET ACCESS NOW!</a>
+                <a href="https://llclick.com/74d4kcdj/" class="btn">GET ACCESS NOW!</a>
             </div>
         </div>
     </section>
+    
     <section class="reviews-section">
         <div class="container">
             <h2 class="section-title">Top Affiliate Marketing Product Reviews</h2>
@@ -329,339 +499,44 @@
             <p style="margin-top: 6px; opacity: 0.7;">Results may vary. This is not a guarantee of income.</p>
         </div>
     </footer>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Make Money Affiliate Marketing Reviews</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    <!-- Audio für Ton-Effekt -->
+    <audio id="popupSound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/286/286-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Popup anzeigen nach kurzer Verzögerung
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('popupOverlay').classList.add('active');
+                // Ton abspielen
+                var audio = document.getElementById('popupSound');
+                audio.volume = 0.3;
+                audio.play().catch(function(e) {
+                    console.log("Audio play failed:", e);
+                });
+            }, 2000); // Popup nach 2 Sekunden anzeigen
+        });
+        
+        // Popup schließen
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('active');
         }
         
-        body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            color: white;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            padding: 40px 0 30px; /* Reduziert von 60px */
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 3px solid #ff5722;
-        }
-        
-        h1 {
-            font-size: 3.2rem;
-            margin-bottom: 15px; /* Reduziert von 20px */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(to right, #ff8a00, #da1b60);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .subtitle {
-            font-size: 1.6rem;
-            margin-bottom: 20px; /* Reduziert von 30px */
-            opacity: 0.9;
-        }
-        
-        .features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px; /* Reduziert von 30px */
-            margin: 20px 0; /* Reduziert von 30px */
-        }
-        
-        .feature {
-            background: rgba(255,255,255,0.15);
-            padding: 12px 20px; /* Reduziert von 15px 25px */
-            border-radius: 50px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px; /* Reduziert von 10px */
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .image-container {
-            text-align: center;
-            margin: 15px 0; /* Weitere Reduzierung von 20px */
-        }
-        
-        .main-image {
-            max-width: 900px;
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            border: 3px solid #ff5722;
-        }
-        
-        .price-container {
-            margin-top: 15px; /* Weitere Reduzierung von 20px */
-            position: relative;
-            display: inline-block;
-        }
-        
-        .price {
-            background: linear-gradient(45deg, #ff8a00, #e52e71);
-            color: white;
-            padding: 18px 35px; /* Leicht reduziert */
-            border-radius: 10px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: inline-block;
-            box-shadow: 0 10px 25px rgba(229, 46, 113, 0.5);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .price:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .price:hover:before {
-            left: 100%;
-        }
-        
-        .price:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(229, 46, 113, 0.7);
-        }
-        
-        section {
-            padding: 40px 0; /* Weitere Reduzierung von 60px */
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 20px; /* Weitere Reduzierung von 30px */
-            font-size: 2.5rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-        
-        .video-section {
-            background: rgba(0, 0, 0, 0.6);
-            text-align: center;
-            border-top: 2px solid #ff5722;
-            border-bottom: 2px solid #ff5722;
-        }
-        
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 3px solid #ff5722;
-        }
-        
-        .video-container iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
-        }
-        
-        .reviews-section {
-            background: rgba(0, 0, 0, 0.7);
-            text-align: center;
-        }
-        
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px; /* Reduziert von 40px */
-            margin-top: 40px; /* Reduziert von 50px */
-        }
-        
-        .review-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px; /* Reduziert von 30px */
-        }
-        
-        .review-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        
-        .review-card h3 {
-            margin-bottom: 15px; /* Reduziert von 20px */
-            font-size: 1.8rem;
-            color: #ff8a00;
-        }
-        
-        .review-card p {
-            margin-bottom: 20px; /* Reduziert von 25px */
-            color: #ddd;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff8a00, #e52e71);
-            color: white;
-            padding: 14px 28px; /* Leicht reduziert */
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-        
-        .btn:hover {
-            background: linear-gradient(45deg, #e52e71, #ff8a00);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(229, 46, 113, 0.6);
-        }
-        
-        .highlight {
-            color: #ffcc00;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-        }
-        
-        .urgency {
-            color: #ff3333;
-            font-weight: bold;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-        
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            text-align: center;
-            padding: 30px 0; /* Reduziert von 40px */
-            font-size: 0.9rem;
-            border-top: 3px solid #ff5722;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+        // Popup auch schließen, wenn außerhalb geklickt wird
+        document.getElementById('popupOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
             }
-            
-            .subtitle {
-                font-size: 1.3rem;
-            }
-            
-            .features {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .video-container iframe {
-                height: 250px;
-            }
-            
-            .reviews-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Best Make Money Affiliate Marketing Reviews</h1>
-            <p class="subtitle">Unbiased Reviews of Top Money-Making Programs & Traffic Sources</p> 
-            <div class="features">
-                <div class="feature">
-                    <span>💳</span> One-Time Payment
-                </div>
-                <div class="feature">
-                    <span>🚫</span> No Subscription
-                </div>
-                <div class="feature">
-                    <span>⚡</span> Instant Access
-                </div>
-            </div>
-            <div class="image-container">
-                <img src="https://summertraffic.net/hosted/images/a7/d4eea981e5415eafd14bbd3bc6f8f1/screenshot-1.png" alt="Buyer Traffic System" class="main-image">
-            </div>
-            <div class="price-container">
-                <a href="https://howtomakemoneyonlinereview.github.io/how-to-get-traffic-on-my-website/" class="price">ONLY $7 - $9 PER TRAFFIC SOURCE! CLICK HERE</a>
-            </div>
-        </div>
-    </header>
-    <section class="video-section">
-        <div class="container">
-            <h2 class="section-title">This NEW Affiliate Platform Pays Up To <span class="highlight">YES! $40,000 PER SALE</span></h2>
-            
-            <div class="video-container">
-                <iframe width="800" height="450" src="https://www.youtube.com/embed/XPAvGqj4sI0" title="How I Made Almost $200K With This Simple Funnel!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            
-            <div style="margin-top: 20px;"> <!-- Reduziert von 30px -->
-                <a href="https://howtomakemoneyonlinereview.github.io/how-to-get-real-buyer-traffic/best-high-paying-affiliate-programs.html" class="btn">GET ACCESS NOW!</a>
-            </div>
-        </div>
-    </section>
-    <section class="reviews-section">
-        <div class="container">
-            <h2 class="section-title">Top Affiliate Marketing Product Reviews</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <h3>Expert Affiliate Program Reviews</h3>
-                    <p>Get in-depth analysis and honest reviews of the highest-paying affiliate programs available today. Our team of experts tests each program to give you the real scoop on what works and what doesn't in the competitive world of affiliate marketing.</p>
-                    <p>We break down commission structures, payment reliability, conversion rates, and support systems to help you make informed decisions about where to invest your time and effort.</p>
-                    <a href="https://freepostzone.com/author/kaydin-chantry/" class="btn">Read Expert Reviews</a>
-                </div>
-                
-                <div class="review-card">
-                    <h3>Traffic Source Analysis & Recommendations</h3>
-                    <p>Discover which traffic sources actually convert and which ones waste your money. We've tested hundreds of traffic sources to bring you only the ones that deliver real buyers, not just empty clicks.</p>
-                    <p>Our comprehensive reviews cover traffic quality, targeting options, pricing, and ROI potential to help you maximize your advertising budget and scale your affiliate business faster.</p>
-                    <a href="https://trafficpostingzone.com/author/moraberslgmail-com/" class="btn">Explore Traffic Sources</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; </p>
-            <p style="margin-top: 8px; opacity: 0.7;">Results may vary. This is not a guarantee of income.</p>
-        </div>
-    </footer>
+        });
+        
+        // Formular absenden mit Bestätigung
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Congratulations! Your free gifts are on the way to your email!');
+            this.submit();
+        });
+    </script>
 </body>
 </html>
